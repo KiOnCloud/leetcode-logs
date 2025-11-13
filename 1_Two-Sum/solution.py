@@ -25,15 +25,14 @@ def get_list_ints_matrix(rows: int) -> List[List[int]]:
     return matrix
 
 def solve(nums, target):
-   num_map = {} 
-   for i, num in enumerate(nums):
-        complement = target - num
-        if complement in num_map:
-            print(num_map[complement], i) 
-            return [num_map[complement], i]
-        num_map[num] = i
+    result_nums = {}
+    for i, num in enumerate(nums):
+        less_target = target - num;
+        if(less_target in result_nums):
+            return [result_nums[less_target], i]
+        result_nums[i] = num
 
 if __name__ == "__main__":
     nums = get_ints()
     target = get_int()
-    solve(nums, target)
+    solve([2,7,11,15], 9)
