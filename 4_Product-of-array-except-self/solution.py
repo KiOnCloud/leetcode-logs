@@ -97,19 +97,18 @@ def solve():
     print("\n".join(out))
 
 def productExceptSelf(self, nums: List[int]) -> List[int]:
-    if( not nums or len(nums) == 0):
+    if(not nums):
         return []
-    res = [1] * len(nums)
-    prefix = 1
+    res = [1]*len(nums)
+    rc = 1
     for i in range(len(nums)):
-        res[i] = prefix
-        prefix *= nums[i]
-    suffix = 1
-    for i in range(len(nums) - 1, -1, -1):
-        res[i] *= suffix
-        suffix *= nums[i]
+        res[i] = rc
+        rc *= nums[i]
+    lc = 1
+    for i in range(len(nums) -1, -1, -1):
+        res[i] *= lc
+        lc *= nums[i]
     return res
-
     
 # =========================== ENTRY ===========================
 if __name__ == "__main__":
