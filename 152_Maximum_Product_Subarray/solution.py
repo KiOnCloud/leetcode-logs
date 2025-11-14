@@ -92,18 +92,24 @@ def solve():
     for _ in range(t): # Read each test case
         n = ni() # Read number of elements
         arr = nlist(n) # Read the array of elements
-        ans = maxSubArray("", arr) # Call the solution function
+        ans = maxProduct("", arr) # Call the solution function
         out.append(str(ans))
     print("\n".join(out))
 
 # solution Function
-def maxSubArray(self, nums: List[int]) -> int:
-    max_r = curr_r = nums[0]
+def maxProduct(self, nums: List[int]) -> int:
+    if not nums:
+        return 0
+    
+    max_p = curr_min = curr_max = nums[0]
     for i in range(1, len(nums)):
-        curr_r = max(nums[i], nums[i] + curr_r)
-        if curr_r > max_r: 
-           max_r = curr_r
-    return max_r   
+        max_temp = max(nums[i], nums[i]*curr_min, nums[i]*curr_max)
+        curr_min = min(nums[i], nums[i]*curr_min, nums[i]*curr_max)
+
+        curr_max = max_temp
+
+        max_p = max(curr_max, max_p)
+    return max_p
 
     
 # =========================== ENTRY ===========================
