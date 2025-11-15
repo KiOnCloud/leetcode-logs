@@ -92,23 +92,29 @@ def solve():
     for _ in range(t): # Read each test case
         n = ni() # Read number of elements
         arr = nlist(n) # Read the array of elements
-        ans = productExceptSelf("", arr)
+        ans = findMin("", arr) # Call the solution function
         out.append(str(ans))
     print("\n".join(out))
 
-def productExceptSelf(self, nums: List[int]) -> List[int]:
-    if(not nums):
-        return []
-    res = [1]*len(nums)
-    rc = 1
-    for i in range(len(nums)):
-        res[i] = rc
-        rc *= nums[i]
-    lc = 1
-    for i in range(len(nums) -1, -1, -1):
-        res[i] *= lc
-        lc *= nums[i]
-    return res
+# solution Function
+def findMin(self, nums: List[int]) -> int:
+    if not nums:
+        return 0
+    l = 0
+    r = len(nums) - 1
+    mid = l + r / 2
+    while(l < r):
+        if nums[l] < nums[r]:
+            return nums[l]
+        
+        mid = (int)((l + r) / 2)
+        if nums[mid] > nums[r]:
+            l = mid + 1
+        else:
+            r = mid
+    return nums[l]
+
+        
     
 # =========================== ENTRY ===========================
 if __name__ == "__main__":
