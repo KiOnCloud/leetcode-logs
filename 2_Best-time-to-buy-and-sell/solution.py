@@ -98,14 +98,16 @@ def solve():
 def bestTimeToBuyAndSell(prices):
     if not prices:
         return 0
-    min_price = float('inf')
-    max_profit = 0
-    for price in prices:
-        if price < min_price:
-            min_price = price
-        elif price - min_price > max_profit:
-            max_profit = price - min_price
-    return max_profit
+    min_profix = float('inf')
+    max_profix = 0
+
+    for p in prices:
+        if(p < min_profix):
+            min_profix = p
+        elif((p - min_profix) > max_profix):
+            max_profix = p - min_profix
+    return max_profix
+
     
 # =========================== ENTRY ===========================
 if __name__ == "__main__":

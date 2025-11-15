@@ -97,15 +97,14 @@ def solve():
     print("\n".join(out))
 
 def containsDuplicate(self, nums: List[int]) -> bool:
-    if(not nums):
+    if not nums:
         return False
-    sl = set()
+    num_set = set()
     for num in nums:
-        if num in sl:
+        if num in num_set:
             return True
-        sl.add(num)
+        num_set.add(num)
     return False
-
     
 # =========================== ENTRY ===========================
 if __name__ == "__main__":
