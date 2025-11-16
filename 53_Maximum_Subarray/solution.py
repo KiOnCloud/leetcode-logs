@@ -98,13 +98,11 @@ def solve():
 
 # solution Function
 def maxSubArray(self, nums: List[int]) -> int:
-    max_r = curr_r = nums[0]
+    max_v = curr_v = nums[0]
     for i in range(1, len(nums)):
-        curr_r = max(nums[i], nums[i] + curr_r)
-        if curr_r > max_r: 
-           max_r = curr_r
-    return max_r   
-
+        curr_v = max(nums[i], nums[i] + curr_v)
+        max_v = max(curr_v, max_v)
+    return max_v
     
 # =========================== ENTRY ===========================
 if __name__ == "__main__":
