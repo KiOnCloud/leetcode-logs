@@ -1,7 +1,8 @@
 #!/usr/bin/env python3
 import os
-import sys, threading, math, bisect
+import sys, threading, math
 from collections import defaultdict, deque
+from typing import List
 
 # ====================== FAST I/O & PARSERS ======================
 def read_tokens():
@@ -91,24 +92,23 @@ def solve():
     for _ in range(t): # Read each test case
         n = ni() # Read number of elements
         arr = nlist(n) # Read the array of elements
-        ans = bestTimeToBuyAndSell(arr)
+        ans = maxProfit("", arr) # Call the solution function
         out.append(str(ans))
     print("\n".join(out))
 
-def bestTimeToBuyAndSell(prices):
+# solution Function
+def maxProfit(self, prices: List[int]) -> int:
     if not prices:
         return 0
-    min_profix = float('inf')
+    buy_price = float('inf')
     max_profix = 0
-
     for p in prices:
-        if(p < min_profix):
-            min_profix = p
-        elif((p - min_profix) > max_profix):
-            max_profix = p - min_profix
+        if p < buy_price:
+            buy_price = p
+        elif (p - buy_price) > max_profix:
+            max_profix = p - buy_price
     return max_profix
 
-    
 # =========================== ENTRY ===========================
 if __name__ == "__main__":
     LOCAL = True

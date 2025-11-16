@@ -113,8 +113,6 @@ def findMin(self, nums: List[int]) -> int:
         else:
             r = mid
     return nums[l]
-
-        
     
 # =========================== ENTRY ===========================
 if __name__ == "__main__":
