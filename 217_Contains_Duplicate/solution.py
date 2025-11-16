@@ -92,18 +92,19 @@ def solve():
     for _ in range(t): # Read each test case
         n = ni() # Read number of elements
         arr = nlist(n) # Read the array of elements
-        ans = containsDuplicate("", arr)
+        ans = containsDuplicate("", arr) # Call the solution function
         out.append(str(ans))
     print("\n".join(out))
 
+# solution Function
 def containsDuplicate(self, nums: List[int]) -> bool:
     if not nums:
         return False
-    num_set = set()
-    for num in nums:
-        if num in num_set:
+    seen = dict()
+    for n in nums:
+        if n in seen:
             return True
-        num_set.add(num)
+        seen[n] = 1
     return False
     
 # =========================== ENTRY ===========================
