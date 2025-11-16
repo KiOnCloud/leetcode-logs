@@ -92,24 +92,24 @@ def solve():
     for _ in range(t): # Read each test case
         n = ni() # Read number of elements
         arr = nlist(n) # Read the array of elements
-        ans = productExceptSelf("", arr)
+        ans = productExceptSelf("", arr) # Call the solution function
         out.append(str(ans))
     print("\n".join(out))
 
+# solution Function
 def productExceptSelf(self, nums: List[int]) -> List[int]:
-    if(not nums):
-        return []
-    res = [1]*len(nums)
-    rc = 1
-    for i in range(len(nums)):
-        res[i] = rc
-        rc *= nums[i]
-    lc = 1
-    for i in range(len(nums) -1, -1, -1):
-        res[i] *= lc
-        lc *= nums[i]
-    return res
-    
+    n = len(nums)
+    r = [1]*n
+    lw = 1
+    for i in range(n):
+        r[i] = lw
+        lw *= nums[i]
+    rw = nums[n - 1]
+    for i in range(n - 2, -1, -1):
+        r[i] *= rw
+        rw *= nums[i]
+    return r
+
 # =========================== ENTRY ===========================
 if __name__ == "__main__":
     LOCAL = True
