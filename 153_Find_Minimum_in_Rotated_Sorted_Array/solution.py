@@ -100,20 +100,20 @@ def solve():
 def findMin(self, nums: List[int]) -> int:
     if not nums:
         return 0
-    l = 0
-    r = len(nums) - 1
-    mid = l + r / 2
+    # m = nums[0]
+    # for n in range(1, len(nums)):
+    #     m = min(m, nums[n])
+    # return m
+    l, r = 0, len(nums) - 1
     while(l < r):
         if nums[l] < nums[r]:
             return nums[l]
-        
         mid = (int)((l + r) / 2)
-        if nums[mid] > nums[r]:
+        if nums[mid] >= nums[l]:
             l = mid + 1
         else:
             r = mid
     return nums[l]
-    
 # =========================== ENTRY ===========================
 if __name__ == "__main__":
     LOCAL = True
