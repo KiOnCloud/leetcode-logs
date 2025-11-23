@@ -104,17 +104,17 @@ def maxArea(self, height: List[int]) -> int:
     n = len(height)
     if n == 1:
         return max_area
-    l, r = 0, n - 1
+    l,r = 0, n - 1
     while(l < r):
-        ah = min(height[l], height[r])
-        width = r - l
-        max_area = max(ah*width, max_area)
+        min_h = min(height[l], height[r])
+        w = r - l
+        max_area = max(max_area, min_h* w)
         if height[l] > height[r]:
-            r -=1
+            r -= 1
         elif height[l] < height[r]:
             l += 1
         else:
-            r -=1
+            r -= 1
     return max_area
     
 # =========================== ENTRY ===========================
