@@ -102,25 +102,23 @@ def threeSum(self, nums: List[int]) -> List[List[int]]:
     if not nums:
         return r
     nums.sort()
-    for i, num in enumerate(nums):
-        if i > 0 and nums[i - 1] == nums[i]:
+    for i, n in enumerate(nums):
+        if i > 0 and nums[i - 1] == n:
             continue
-
-        min_p = i + 1
-        max_p = len(nums) - 1
-        while(min_p < max_p):
-            t = num + nums[min_p] + nums[max_p]
-            if t > 0:
+        min_p, max_p = min(i + 1, len(nums) - 1), len(nums) - 1
+        while( min_p < max_p):
+            temp_sum = n + nums[min_p] + nums[max_p]
+            if temp_sum > 0:
                 max_p -= 1
-            elif t < 0:
+            elif temp_sum < 0:
                 min_p += 1
             else:
-                r.append([num, nums[min_p], nums[max_p]])
+                r.append(n, nums[min_p], nums[max_p])
                 min_p += 1
-                while(nums[min_p] == nums[max(min_p - 1, 0)] and min_p < max_p):
+                while(nums[min_p] == nums[max(min_p - 1, 0)] and min_p < len(nums) -1):
                     min_p += 1
     return r
-    
+
 # =========================== ENTRY ===========================
 if __name__ == "__main__":
     LOCAL = True
