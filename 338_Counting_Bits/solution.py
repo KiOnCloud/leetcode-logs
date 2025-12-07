@@ -99,13 +99,20 @@ def solve():
 # solution Function
 def countBits(self, n: int) -> List[int]:
     ans = (n + 1)*[0]
-    for i in range(n + 1):
-        counter = 0
-        t = i
-        while t:
-            counter += 1
-            t &= (t - 1)
-        ans[i] = counter
+    # for i in range(n + 1):
+    #     counter = 0
+    #     t = i
+    #     while t:
+    #         counter += 1
+    #         t &= (t - 1)
+    #     ans[i] = counter
+
+    # DP
+    offset = 1
+    for i in range(1 ,n + 1):
+        if offset*2 == i:
+            offset = i
+        ans[i] = 1 + ans[i - offset]
     return ans
 
 # =========================== ENTRY ===========================
