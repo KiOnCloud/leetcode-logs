@@ -92,7 +92,7 @@ def solve():
     for _ in range(t): # Read each test case
         n = ni() # Read number of elements
         arr = nlist(n) # Read the array of elements
-        ans = longestCommonSubsequence("", "ezupkr", "ubmrapg") # Call the solution function
+        ans = combinationSum4("", arr, 4) # Call the solution function
         out.append(str(ans))
     print("\n".join(out))
 
