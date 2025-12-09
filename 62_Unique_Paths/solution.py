@@ -92,29 +92,22 @@ def solve():
     for _ in range(t): # Read each test case
         n = ni() # Read number of elements
         arr = nlist(n) # Read the array of elements
-        ans = numDecodings("", "226") # Call the solution function
+        ans = uniquePaths("", arr[0], arr[1]) # Call the solution function
         out.append(str(ans))
     print("\n".join(out))
 
 # solution Function
-def numDecodings(self, s: str) -> int:
-    if s[0] == '0':
-        return 0
+def uniquePaths(self, m: int, n: int) -> int:
     
-    n = len(s)
-    dp = [0] * (n + 1)
-    dp[0], dp[1] = 1, 1
+    aboveRow = [1] * n
 
-    for i in range(2, n + 1):
-        one = int(s[i - 1])
-        two = int(s[i - 2:i])
-
-        if 1 <= one <= 9:
-            dp[i] += dp[i - 1]
-        if 10 <= two <= 26:
-            dp[i] += dp[i - 2]
-
-    return dp[n]
+    for _ in range(m - 1):
+        currentRow = [1] * n
+        for i in range(1, n):
+            currentRow[i] = currentRow[i-1] + aboveRow[i]
+        aboveRow = currentRow
+    
+    return aboveRow[-1]
 
 # =========================== ENTRY ===========================
 if __name__ == "__main__":
